@@ -1,7 +1,6 @@
 var price = 1299.99;
 var people = 3;
-var material = 'food';
-
+var material = 'fries';
 
 var mandatoryMarkup = {
   markup: 5,
@@ -9,16 +8,20 @@ var mandatoryMarkup = {
 }
 
 var materials = {
-  drugs: 7.5,
+  drug: 7.5,
   food: 13,
-  electronics: 2,
-  people: 1.2,
+  electronic: 2,
 }
 
-function calculateTotal(price, people, material){
+function calculateTotal(price, people, material) {
   var markupPrice = price * (mandatoryMarkup.markup/100) + price;
-  var materialPrice = markupPrice * (materials.food/100);
   var peoplePrice = markupPrice * ((mandatoryMarkup.people * people) / 100);
+
+  if (material in materials) {
+    var materialPrice = markupPrice * (materials.food/100);
+  } else {
+    var materialPrice = 0;
+  }
 
   return (markupPrice + peoplePrice + materialPrice).toFixed(2);
 }
