@@ -1,0 +1,11 @@
+{
+  "name": "coding-exercise-nulogy",
+  "description": "",
+  "version": "1.0.0",
+  "author": "Stacy Zhao <Stacyczhao@gmail.com>",
+
+
+  "scripts": {
+    "test": "mocha"
+  }
+}
