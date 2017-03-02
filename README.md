@@ -1,39 +1,12 @@
-Link Apprenticeship Coding Exercise
+# Link Apprenticeship Coding Exercise For Nulogy
 
-Why are we asking for a coding submission?
-This is not a complex computer science puzzle. Rather, what we’re looking for is how you can translate a business problem into code. Remember, there is no perfect solution to this problem!
+## Requirements
 
-This coding submission serves two purposes:
-We’ll use it to get a sense of your approach to writing software.
-In the interview process, we’ll be pair programming with you! We’ll use your coding submission so you’re familiar with the problem and code we’re working with.
-Instructions
-Please complete the coding exercise described below. This problem gives us a chance to see how you approach testing and problem decomposition. Note—be sure to preserve your commit history (i.e. don't squash your solution into a single commit.)
+## Objective
+To create a system that calculates associated costs regarding repackaging.
 
-Push your solution to a publicly accessible repository (e.g. GitHub). Once you're ready, send along the link to your repo.
+## Problem
 
-
-Please also include a reflection on submission (you can create a text file and include it somewhere in the repo.) The intent here is to give you an opportunity to comment on your submission. As such, there’s no formal requirements. However, you might consider commenting on what other design options you considered, and what principles guided certain decisions. Also, if there are aspects of your implementation that you had questions about, feel free to discuss that here.
-
-Coding Exercise
-
-
-Answer the following question using Ruby, JavaScript or Java without using any third party gems, plugins, or jar files with the exception of  test frameworks (i.e. MiniTest, RSpec, Mocha/Chai, JUnit, etc).
-
- - Treat this problem as a library. No UI or file/console input is expected or required.
-
-- Add a Readme file that at least includes:
-    - runtime versions (e.g. Ruby 2.3)
-    - how to install any dependencies
-    - how to run your tests from the command line
-
-- Many commits. Don't squash into a single commit.
-
-- Please submit via publicly accessible repo so that we can review your commits.
-
-Note: if you choose to submit a Java solution either include the config files for Eclipse or IntelliJ and/or include a build script written using Ant, Maven, or Gradle so we can easily build your solution and run your tests.
-
-Pricing problem
-===============
 NuPack is responsible for taking existing products and repackaging them for sale at electronic stores like Best Buy. Companies will phone up NuPack, explain the process and NuPack needs to quickly give them an estimate of how much it will cost. Different markups to the job:
 
 * Without exception, there is a flat markup on all jobs of 5%
@@ -54,7 +27,7 @@ Example 1:
 ----------
     Input:  $1,299.99, 3 people, food
     Output: $1,591.58
-
+    
 Example 2:
 ----------
     Input:  $5,432.00, 1 person, drugs
