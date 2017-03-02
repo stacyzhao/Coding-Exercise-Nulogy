@@ -1,11 +1,17 @@
 {
   "name": "coding-exercise-nulogy",
-  "description": "",
+  "description": "NuPack's estimate calculator",
   "version": "1.0.0",
   "author": "Stacy Zhao <Stacyczhao@gmail.com>",
-
-
+  "license": "MIT",
   "scripts": {
     "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stacyzhao/Coding-Exercise-Nulogy"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0"
   }
 }
