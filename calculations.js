@@ -11,9 +11,8 @@ var materials = {
 
 module.exports = {
   calculateTotal: function (price, people, material) {
-    // check if price's first value has $, if so, remove and convert it to float
-    if (typeof price != 'number'){
-      price = parseFloat(price.slice(1, price.length));
+    if (typeof price !== 'number'){
+      throw new Error('not a number');
     }
 
     var markupPrice = price * (mandatoryMarkup.markup/100) + price;
@@ -33,8 +32,7 @@ module.exports = {
     };
 
     var peoplePrice = module.exports.employeePrice(people, markupPrice);
-
-    return (markupPrice + peoplePrice + materialPrice).toFixed(2);
+    return Math.round((markupPrice + peoplePrice + materialPrice) * 100) / 100.0;
   },
 
   // check if material is in the materials object
@@ -54,5 +52,5 @@ module.exports = {
   }
 
 };
-
-console.log(module.exports.calculateTotal(1299.99, 3, ['food', 'drug']));
+var test = module.exports.calculateTotal(1299.99, 3, 'food');
+console.log(test);
