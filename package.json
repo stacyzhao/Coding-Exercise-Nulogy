@@ -12,6 +12,7 @@
     "url": "https://github.com/stacyzhao/Coding-Exercise-Nulogy"
   },
   "devDependencies": {
-    "mocha": "^3.2.0"
+    "chai": "*",
+    "mocha": "*"
   }
 }
