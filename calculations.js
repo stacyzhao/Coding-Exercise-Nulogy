@@ -10,15 +10,24 @@ var materials = {
 };
 
 module.exports = {
-  
-  // check if price's first value has $, if so, remove and convert it to float
   calculateTotal: function (price, people, material) {
+    // check if price's first value has $, if so, remove and convert it to float
     if (typeof price != 'number'){
       price = parseFloat(price.slice(1, price.length));
     }
+
     var markupPrice = price * (mandatoryMarkup.markup/100) + price;
-    var materialPrice = module.exports.employeePrice(people, markupPrice);
-    var peoplePrice = module.exports.materialPrice(material, markupPrice);
+
+    // check if there are more than 1 material and include them into the total
+    if (arguments.length >= 3){
+      var materialPrice = 0;
+      for (var x = 2; x < arguments.length; x++){
+        materialPrice += module.exports.materialPrice(arguments[x], markupPrice);
+      }
+    }
+
+    var peoplePrice = module.exports.employeePrice(people, markupPrice);
+
     return (markupPrice + peoplePrice + materialPrice).toFixed(2);
   },
 
@@ -39,5 +48,3 @@ module.exports = {
   }
 
 };
-
-console.log(module.exports.calculateTotal(5432.00, 1, 'drug'));
