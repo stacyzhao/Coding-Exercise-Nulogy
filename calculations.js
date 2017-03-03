@@ -18,13 +18,19 @@ module.exports = {
 
     var markupPrice = price * (mandatoryMarkup.markup/100) + price;
 
-    // check if there are more than 1 material and include them into the total
-    if (arguments.length >= 3){
-      var materialPrice = 0;
-      for (var x = 2; x < arguments.length; x++){
-        materialPrice += module.exports.materialPrice(arguments[x], markupPrice);
+    // check if material is in an array if not make it an array
+    if (!Array.isArray(material)){
+      var material = [material];
+    };
+
+    var materialPrice = 0;
+
+    // check if there are more than 1 material and total accordingly
+    if (material.length >= 1) {
+      for (var x = 0; x < material.length; x++){
+        materialPrice += module.exports.materialPrice(material[x], markupPrice);
       }
-    }
+    };
 
     var peoplePrice = module.exports.employeePrice(people, markupPrice);
 
@@ -48,3 +54,5 @@ module.exports = {
   }
 
 };
+
+console.log(module.exports.calculateTotal(1299.99, 3, ['food', 'drug']));
