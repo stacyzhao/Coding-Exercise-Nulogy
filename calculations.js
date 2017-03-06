@@ -11,13 +11,13 @@ var materials = {
 
 module.exports = {
   calculateTotal: function (price, people, material) {
-    if (typeof price !== 'number'){
-      throw new Error('not a number');
-    }
+    if (typeof price !== 'number' || price <= 0 || price === undefined){
+      throw new Error('Invalid Input');
+    };
 
     var markupPrice = price * (mandatoryMarkup.markup/100) + price;
 
-    // check if material is in an array if not make it an array
+    // check if material(s) is in an array if not make it an array
     if (!Array.isArray(material)){
       var material = [material];
     };
@@ -32,25 +32,26 @@ module.exports = {
     };
 
     var peoplePrice = module.exports.employeePrice(people, markupPrice);
+
     return Math.round((markupPrice + peoplePrice + materialPrice) * 100) / 100.0;
   },
 
-  // check if material is in the materials object
   materialPrice: function (material, markupPrice){
+    // check if material exists
     if (material in materials) {
       return markupPrice * (materials[material]/100);
-    } else {
-      return 0;
     };
+    return 0;
   },
 
-  // check if the number of people is a number
   employeePrice: function (people, markupPrice){
-    if (typeof people === 'number'){
-      return markupPrice * ((mandatoryMarkup.people * people) / 100);
+    // check if the number of people is a number. default is 1.
+    if (typeof people !== 'number' || people <= 0){
+      people = 1;
     }
+    return markupPrice * ((mandatoryMarkup.people * people) / 100);
   }
 
 };
-var test = module.exports.calculateTotal(1299.99, 3, 'food');
+var test = module.exports.calculateTotal(4, 'books');
 console.log(test);
