@@ -9,6 +9,22 @@ var materials = {
   electronic: 2,
 };
 
+var checkMaterial = function (material, markupPrice){
+  // check if material exists
+  if (material in materials) {
+    return markupPrice * (materials[material]/100);
+  };
+  return 0;
+};
+
+var employeePrice = function (people, markupPrice){
+  // check if the number of people is a number. default is 1.
+  if (typeof people !== 'number' || people <= 0){
+    people = 1;
+  };
+  return markupPrice * ((mandatoryMarkup.people * people) / 100);
+};
+
 module.exports = {
   calculateTotal: function (price, people, material) {
     if (typeof price !== 'number' || price <= 0 || price === undefined){
@@ -25,31 +41,13 @@ module.exports = {
     var materialPrice = 0;
 
     // check if there are more than 1 material and total accordingly
-    if (material.length >= 1) {
-      for (var x = 0; x < material.length; x++){
-        materialPrice += module.exports.materialPrice(material[x], markupPrice);
-      }
+    for (var x = 0; x < material.length; x++){
+      materialPrice += checkMaterial(material[x], markupPrice);
     };
 
-    var peoplePrice = module.exports.employeePrice(people, markupPrice);
+    var peoplePrice = employeePrice(people, markupPrice);
 
     return Math.round((markupPrice + peoplePrice + materialPrice) * 100) / 100.0;
-  },
-
-  materialPrice: function (material, markupPrice){
-    // check if material exists
-    if (material in materials) {
-      return markupPrice * (materials[material]/100);
-    };
-    return 0;
-  },
-
-  employeePrice: function (people, markupPrice){
-    // check if the number of people is a number. default is 1.
-    if (typeof people !== 'number' || people <= 0){
-      people = 1;
-    }
-    return markupPrice * ((mandatoryMarkup.people * people) / 100);
   }
 
 };
