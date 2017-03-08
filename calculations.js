@@ -53,5 +53,3 @@ module.exports = {
   }
 
 };
-var test = module.exports.calculateTotal(4, 'books');
-console.log(test);
