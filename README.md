@@ -16,6 +16,7 @@ npm test
 ```
 calculations.calculateTotal(base price, number of people, type of material);
 ```
+The only type of materials available are: drug, food, electronic.
 
 ### Example 1:
     calculations.calculateTotal(1299.99, 3, food);
