@@ -12,11 +12,12 @@ npm test
 ```
 
 ## Examples
+To determine the total price replace the following variable with the intended
+values. The type of materials available are: drug, food, electronic.
 
 ```
 calculations.calculateTotal(base price, number of people, type of material);
 ```
-The only type of materials available are: drug, food, electronic.
 
 ### Example 1:
     calculations.calculateTotal(1299.99, 3, food);
