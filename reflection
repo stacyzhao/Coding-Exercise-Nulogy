@@ -1,0 +1,13 @@
+I started with counting the number of arguments to determine if there were more
+than 3 and then I decided to change it to an array. The goal was to be able to
+add any additional input with ease without changing much. So, by having
+materials in an input array would make it easier to implement without the
+function trying to figure out which argument belongs to what.
+
+I decided to build this as a small library that could be used in other
+other code. This way it doesn’t care what the UI looks like or how it’s
+information is used. This also allowed me to be more strict with inputs/outputs
+and not have to handle things like parsing the string “$123.45” to a float.
+I’ve never written a node module before so I suspect there are some pieces to
+package.json that would be needed to publish this (even if it were published
+to a private repo) so that it could be used by npm.
