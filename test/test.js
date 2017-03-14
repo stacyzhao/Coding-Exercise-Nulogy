@@ -4,38 +4,66 @@ var expect = require('chai').expect;
 var calculateTotal = app.calculateTotal;
 
 describe('calculateTotal', function() {
+
   it('should return total when the value is not in materials', function() {
-    expect(calculateTotal(6000.00, 2, 'gears')).to.equal(6451.20);
-    expect(calculateTotal(12456.95, 4, 'books')).to.equal(13707.63);
+    var price = 1299.99,
+        people = 3,
+        material = 'gears',
+        test = calculateTotal(price, people, material);
+
+    expect(test).to.equal(1414.13);
   });
 
   it('should return total when the value is available in materials', function() {
-    expect(calculateTotal(1299.99, 3, 'food')).to.equal(1591.58);
-    expect(calculateTotal(5432.00, 1, 'drug')).to.equal(6199.81);
-    expect(calculateTotal(99.50, 1, 'electronic')).to.equal(107.82);
+    var price = 1299.99,
+        people = 3,
+        material = 'food',
+        test = calculateTotal(price, people, material);
+
+    expect(test).to.equal(1591.58);
   });
 
   it('should return total when the number of people is 0', function() {
-    expect(calculateTotal(5432.00, 0, 'drug')).to.equal(6199.81);
+    var price = 5432.00,
+        people = 0,
+        material = 'drug',
+        test = calculateTotal(price, people, material);
+
+    expect(test).to.equal(6199.81);
   });
 
   it('should return total when there are more than one or more type of material (array)', function() {
-    expect(calculateTotal(1299.99, 3, [])).to.equal(1414.13);
-    expect(calculateTotal(1299.99, 3, ['food'])).to.equal(1591.58);
-    expect(calculateTotal(1299.99, 3, ['food', 'drug'])).to.equal(1693.95);
-    expect(calculateTotal(1299.99, 3, ['food', 'drug', 'service'])).to.equal(1693.95);
+    var price = 1299.99,
+        people = 3,
+        test1 = calculateTotal(price, people, []),
+        test2 = calculateTotal(price, people, ['food']),
+        test3 = calculateTotal(price, people, ['food', 'drug', 'service']);
+
+    expect(test1).to.equal(1414.13);
+    expect(test2).to.equal(1591.58);
+    expect(test3).to.equal(1693.95);
   });
 
   it('should return total when the price has an invalid input', function() {
-    expect(function (){calculateTotal('$12456.95', 4, 'books')}).to.throw('Invalid Input');
-    expect(function (){calculateTotal(0, 4, 'books')}).to.throw('Invalid Input');
-    expect(function (){calculateTotal(-40, 4, 'books')}).to.throw('Invalid Input');
+    var people = 4,
+        material = 'books',
+        err = 'Invalid Input';
+
+    expect(function (){calculateTotal('$12456.95', people, material)}).to.throw(err);
+    expect(function (){calculateTotal(0, people, material)}).to.throw(err);
+    expect(function (){calculateTotal(-40, people, material)}).to.throw(err);
   });
 
   it('should return total when the labour count has an invalid input', function() {
-    expect(calculateTotal(4, 'books')).to.equal(4.25);
-    expect(calculateTotal(5432.00, "s", 'drug')).to.equal(6199.81);
-    expect(calculateTotal(5432.00, [], 'drug')).to.equal(6199.81);
-    expect(calculateTotal(5432.00, -2, 'drug')).to.equal(6199.81);
+    var price = 5432.00,
+        material = 'drug',
+        test1 = calculateTotal(price, "s", material),
+        test2 = calculateTotal(price, [], material),
+        test3 = calculateTotal(price, -2, material);
+
+    expect(test1).to.equal(6199.81);
+    expect(test2).to.equal(6199.81);
+    expect(test3).to.equal(6199.81);
   });
+
 });
