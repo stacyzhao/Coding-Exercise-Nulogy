@@ -4,7 +4,7 @@ var expect = require('chai').expect;
 var calculateTotal = app.calculateTotal;
 
 describe('calculateTotal', function() {
-  describe('price', function() {
+  describe('when price changes', function() {
     it('should return error when the price has an invalid input', function() {
       var people = 4,
           material = 'books',
@@ -15,8 +15,8 @@ describe('calculateTotal', function() {
       expect(function (){calculateTotal(-40, people, material)}).to.throw(err);
     });
   });
-  
-  describe('labour/people', function() {
+
+  describe('when labour/people changes', function() {
     before(function () {
       this.price = 5432.00;
       this.material = 'drug';
@@ -41,7 +41,7 @@ describe('calculateTotal', function() {
     });
   });
 
-  describe('material', function() {
+  describe('when material changes', function() {
     before(function () {
       this.price = 1299.99;
       this.people = 3;
@@ -63,7 +63,7 @@ describe('calculateTotal', function() {
       expect(test).to.equal(1591.58);
     });
 
-    it('should return total when there are multiple materials (argument)', function() {
+    it('should return total when there are multiple materials passed', function() {
       var material1 = 'food',
           material2 = 'paper';
 
@@ -72,7 +72,7 @@ describe('calculateTotal', function() {
       expect(test).to.equal(1591.58);
     });
 
-    it('should return total when there are more than one or more material(s) (array)', function() {
+    it('should return total when there are more than one or more material(s) in an array', function() {
       var test1 = calculateTotal(this.price, this.people, []),
           test2 = calculateTotal(this.price, this.people, ['food']),
           test3 = calculateTotal(this.price, this.people, ['food', 'drug', 'paper']);
