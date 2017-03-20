@@ -6,46 +6,46 @@ var calculateTotal = app.calculateTotal;
 describe('calculateTotal', function() {
 
   it('should return total when the value is not in materials', function() {
-    var price = 1299.99,
+    var basePrice = 1299.99,
         people = 3,
         material = 'gears';
 
-    var test = calculateTotal(price, people, material);
+    var totalPrice = calculateTotal(basePrice, people, material);
 
-    expect(test).to.equal(1414.13);
+    expect(totalPrice).to.equal(1414.13);
   });
 
   it('should return total when the value is available in materials', function() {
-    var price = 1299.99,
+    var basePrice = 1299.99,
         people = 3,
         material = 'food';
 
-    var test = calculateTotal(price, people, material);
+    var totalPrice = calculateTotal(basePrice, people, material);
 
-    expect(test).to.equal(1591.58);
+    expect(totalPrice).to.equal(1591.58);
   });
 
   it('should return total when the number of people is 0', function() {
-    var price = 5432.00,
+    var basePrice = 5432.00,
         people = 0,
         material = 'drug';
 
-    var test = calculateTotal(price, people, material);
+    var totalPrice = calculateTotal(basePrice, people, material);
 
-    expect(test).to.equal(6199.81);
+    expect(totalPrice).to.equal(6199.81);
   });
 
   it('should return total when there are more than one or more type of material (array)', function() {
-    var price = 1299.99,
+    var basePrice = 1299.99,
         people = 3;
 
-    var test1 = calculateTotal(price, people, []),
-        test2 = calculateTotal(price, people, ['food']),
-        test3 = calculateTotal(price, people, ['food', 'drug', 'service']);
+    var totalPrice1 = calculateTotal(basePrice, people, []),
+        totalPrice2 = calculateTotal(basePrice, people, ['food']),
+        totalPrice3 = calculateTotal(basePrice, people, ['food', 'drug', 'service']);
 
-    expect(test1).to.equal(1414.13);
-    expect(test2).to.equal(1591.58);
-    expect(test3).to.equal(1693.95);
+    expect(totalPrice1).to.equal(1414.13);
+    expect(totalPrice2).to.equal(1591.58);
+    expect(totalPrice3).to.equal(1693.95);
   });
 
   it('should return total when the price has an invalid input', function() {
@@ -59,16 +59,16 @@ describe('calculateTotal', function() {
   });
 
   it('should return total when the labour count has an invalid input', function() {
-    var price = 5432.00,
+    var basePrice = 5432.00,
         material = 'drug';
 
-    var test1 = calculateTotal(price, "s", material),
-        test2 = calculateTotal(price, [], material),
-        test3 = calculateTotal(price, -2, material);
+    var totalPrice1 = calculateTotal(basePrice, "s", material),
+        totalPrice2 = calculateTotal(basePrice, [], material),
+        totalPrice3 = calculateTotal(basePrice, -2, material);
 
-    expect(test1).to.equal(6199.81);
-    expect(test2).to.equal(6199.81);
-    expect(test3).to.equal(6199.81);
+    expect(totalPrice1).to.equal(6199.81);
+    expect(totalPrice2).to.equal(6199.81);
+    expect(totalPrice3).to.equal(6199.81);
   });
 
 });
